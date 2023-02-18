@@ -30,7 +30,10 @@
       </svg>
     </template>
     <template v-else>
-      <GeneralSlider :sliderData="GET_DOGS" :sliderOptions="dogSliderConfig.dog" />
+      <GeneralSlider
+        :sliderData="GET_DOGS"
+        :sliderOptions="dogSliderConfig.dog"
+      />
     </template>
     <div class="product_contener">
       <ProductCard
@@ -69,8 +72,10 @@ export default {
 
     getDogsData() {
       if (!getCookie(storageKeys.cookies.DOGS)) {
+        console.log(1111111111111);
         this.updateDogs();
       } else {
+        console.log(getCookie(storageKeys.cookies.DOGS));
         this.SET_DOGS(JSON.parse(getCookie(storageKeys.cookies.DOGS)));
       }
     },
@@ -85,7 +90,7 @@ export default {
       this.SET_DOGS(dogsArr);
       setCookie(
         storageKeys.cookies.DOGS,
-        JSON.stringify(this.dogs),
+        JSON.stringify(this.GET_DOGS),
         5 /*Minutes*/
       );
     },
